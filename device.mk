@@ -50,6 +50,7 @@ DEVICE_PACKAGE_OVERLAYS += \
 # Rootdir
 PRODUCT_PACKAGES += \
     fstab.qcom \
+    fstab.qcom.ramdisk \
     init.device.rc
 
 # Soong namespaces
