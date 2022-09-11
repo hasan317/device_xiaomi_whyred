@@ -19,10 +19,8 @@ PRODUCT_COPY_FILES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    libpiex_shim
-
-# Consumerir
-BOARD_HAVE_IR := true
+    libpiex_shim \
+    libui_shim.vendor
 
 # Fingerprint
 PRODUCT_PACKAGES += \
@@ -31,10 +29,13 @@ PRODUCT_PACKAGES += \
 # FM
 BOARD_HAVE_QCOM_FM := true
 
-# Gatekeeper HAL
+# Gatekeeper
 PRODUCT_PACKAGES += \
     android.hardware.gatekeeper@1.0-impl \
     android.hardware.gatekeeper@1.0-service
+
+# IR
+BOARD_HAVE_IR := true
 
 # Keymaster
 PRODUCT_PACKAGES += \
@@ -46,14 +47,10 @@ DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay \
     $(LOCAL_PATH)/overlay-lineage
 
-# Ramdisk
+# Rootdir
 PRODUCT_PACKAGES += \
     fstab.qcom \
     init.device.rc
-
-# Shims
-PRODUCT_PACKAGES += \
-    libui_shim.vendor
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
