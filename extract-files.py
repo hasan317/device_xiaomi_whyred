@@ -34,6 +34,8 @@ blob_fixups: blob_fixups_user_type = {
         .replace_needed('libcamera_sdm660_shim.so', 'libui_shim.so'),
     'vendor/lib64/libgf_ca.so': blob_fixup()
         .binary_regex_replace(b'/system/etc/firmware', b'/vendor/firmware\x00\x00\x00\x00'),
+    ('vendor/lib64/libvendor.goodix.hardware.fingerprint@1.0.so', 'vendor/lib64/vendor.qti.hardware.fingerprint@1.0.so'): blob_fixup()
+        .replace_needed('libhidlbase.so', 'libhidlbase-v32.so'),
 }  # fmt: skip
 
 module = ExtractUtilsModule(
