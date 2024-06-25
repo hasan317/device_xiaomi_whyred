@@ -9,6 +9,9 @@ include device/xiaomi/sdm660-common/BoardConfigCommon.mk
 
 DEVICE_PATH := device/xiaomi/whyred
 
+# A/B
+AB_OTA_UPDATER := false
+
 # Boot animation
 TARGET_SCREEN_HEIGHT := 2160
 TARGET_SCREEN_WIDTH := 1080
