@@ -34,6 +34,10 @@ blob_fixups: blob_fixups_user_type = {
         .replace_needed('libcamera_sdm660_shim.so', 'libui_shim.so'),
     'vendor/lib/libMiWatermark.so': blob_fixup()
         .replace_needed('libpiex-v29.so', 'libpiex_shim.so'),
+    'vendor/lib/libmmcamera_faceproc.so': blob_fixup()
+        .clear_symbol_version('__aeabi_memcpy')
+        .clear_symbol_version('__aeabi_memset')
+        .clear_symbol_version('__gnu_Unwind_Find_exidx'),
     'vendor/lib64/libgf_ca.so': blob_fixup()
         .binary_regex_replace(b'/system/etc/firmware', b'/vendor/firmware\x00\x00\x00\x00'),
     ('vendor/lib64/libvendor.goodix.hardware.fingerprint@1.0.so', 'vendor/lib64/vendor.qti.hardware.fingerprint@1.0.so'): blob_fixup()
