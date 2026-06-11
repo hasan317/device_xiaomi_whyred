@@ -1,0 +1,32 @@
+#!/usr/bin/env -S PYTHONPATH=../../../tools/extract-utils python3
+#
+# SPDX-FileCopyrightText: The LineageOS Project
+# SPDX-License-Identifier: Apache-2.0
+#
+
+from extract_utils.fixups_blob import (
+    blob_fixup,
+    blob_fixups_user_type,
+)
+from extract_utils.main import (
+    ExtractUtils,
+    ExtractUtilsModule,
+)
+
+blob_fixups: blob_fixups_user_type = {
+    'vendor/lib/hw/camera.sdm660.so': blob_fixup()
+        .add_needed('libcamera_sdm660_shim.so'),
+    'vendor/lib64/libgf_ca.so': blob_fixup()
+        .binary_regex_replace(b'/system/etc/firmware', b'/vendor/firmware\x00\x00\x00\x00'),
+}  # fmt: skip
+
+module = ExtractUtilsModule(
+    'whyred',
+    'xiaomi',
+    blob_fixups=blob_fixups,
+    check_elf=False,
+)
+
+if __name__ == '__main__':
+    utils = ExtractUtils.device_with_common(module, 'sdm660-common', module.vendor)
+    utils.run()
