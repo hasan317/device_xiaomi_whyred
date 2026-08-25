@@ -31,7 +31,7 @@ lib_fixups: lib_fixups_user_type = {
 
 blob_fixups: blob_fixups_user_type = {
     'vendor/lib/hw/camera.sdm660.so': blob_fixup()
-        .add_needed('libcamera_sdm660_shim.so'),
+        .replace_needed('libcamera_sdm660_shim.so', 'libui_shim.so'),
     'vendor/lib64/libgf_ca.so': blob_fixup()
         .binary_regex_replace(b'/system/etc/firmware', b'/vendor/firmware\x00\x00\x00\x00'),
 }  # fmt: skip
